@@ -61,6 +61,10 @@ namespace UnityEditor.Rendering.Universal.ShaderGUI
             {
                 materialEditor.ShaderProperty(customProperties.uv_Scroll, "enable UV SCROLL");
             }
+            if (customProperties.uv_Scroll.floatValue == 1 && customProperties.scrollSpeed != null)
+            {
+                materialEditor.VectorProperty(customProperties.scrollSpeed, "Scroll Speed");
+            }
         }
 
         // material main advanced options
