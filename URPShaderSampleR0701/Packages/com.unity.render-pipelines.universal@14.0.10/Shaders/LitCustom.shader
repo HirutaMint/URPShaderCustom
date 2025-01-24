@@ -1,4 +1,4 @@
-Shader "Universal Render Pipeline/Custom/LitCustom"
+﻿Shader "Universal Render Pipeline/Custom/LitCustom"
 {
     Properties
     {
@@ -71,6 +71,9 @@ Shader "Universal Render Pipeline/Custom/LitCustom"
         [HideInInspector][NoScaleOffset]unity_Lightmaps("unity_Lightmaps", 2DArray) = "" {}
         [HideInInspector][NoScaleOffset]unity_LightmapsInd("unity_LightmapsInd", 2DArray) = "" {}
         [HideInInspector][NoScaleOffset]unity_ShadowMasks("unity_ShadowMasks", 2DArray) = "" {}
+
+        //UVスクロール機能の管理の値
+        [Toggle] _uv_Scroll("enable UV SCROLL", Float) = 0
     }
 
     SubShader
@@ -130,6 +133,9 @@ Shader "Universal Render Pipeline/Custom/LitCustom"
             #pragma shader_feature_local_fragment _SPECULARHIGHLIGHTS_OFF
             #pragma shader_feature_local_fragment _ENVIRONMENTREFLECTIONS_OFF
             #pragma shader_feature_local_fragment _SPECULAR_SETUP
+
+            //UVスクロール管理用のフラグ
+            #pragma shader_feature_local _UV_SCROLL_ON
 
             // -------------------------------------
             // Universal Pipeline keywords
