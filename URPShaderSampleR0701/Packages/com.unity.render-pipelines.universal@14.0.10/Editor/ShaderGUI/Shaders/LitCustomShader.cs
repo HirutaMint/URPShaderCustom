@@ -11,6 +11,9 @@ namespace UnityEditor.Rendering.Universal.ShaderGUI
         private LitGUI.LitProperties litProperties;
         private LitDetailGUI.LitProperties litDetailProperties;
 
+        //カスタムで用意したプロパティ管理用のクラス
+        private LitCustomGUI.LitProperties customProperties;
+
         public override void FillAdditionalFoldouts(MaterialHeaderScopeList materialScopesList)
         {
             materialScopesList.RegisterHeaderScope(LitDetailGUI.Styles.detailInputs, Expandable.Details, _ => LitDetailGUI.DoDetailArea(litDetailProperties, materialEditor));
@@ -22,6 +25,9 @@ namespace UnityEditor.Rendering.Universal.ShaderGUI
             base.FindProperties(properties);
             litProperties = new LitGUI.LitProperties(properties);
             litDetailProperties = new LitDetailGUI.LitProperties(properties);
+
+            //カスタムで用意したプロパティを読み込み
+            customProperties = new LitCustomGUI.LitProperties(properties);
         }
 
         // material changed check
@@ -49,6 +55,12 @@ namespace UnityEditor.Rendering.Universal.ShaderGUI
             LitGUI.Inputs(litProperties, materialEditor, material);
             DrawEmissionProperties(material, true);
             DrawTileOffset(materialEditor, baseMapProp);
+
+            //UVスクロール管理用のトグルを表示
+            if (customProperties.uv_Scroll != null)
+            {
+                materialEditor.ShaderProperty(customProperties.uv_Scroll, "enable UV SCROLL");
+            }
         }
 
         // material main advanced options
