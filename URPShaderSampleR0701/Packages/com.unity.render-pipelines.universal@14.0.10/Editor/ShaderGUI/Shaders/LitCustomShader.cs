@@ -65,6 +65,22 @@ namespace UnityEditor.Rendering.Universal.ShaderGUI
             {
                 materialEditor.VectorProperty(customProperties.scrollSpeed, "Scroll Speed");
             }
+            //フレネル効果の設定
+            if(customProperties.useFresnel != null)
+            {
+                materialEditor.ShaderProperty(customProperties.useFresnel, "enable Fresnel Effect");
+            }
+            if(customProperties.useFresnel.floatValue == 1)
+            {
+                if (customProperties.fresnelPower != null)
+                {
+                    materialEditor.FloatProperty(customProperties.fresnelPower, "Fresnel Power");
+                }
+                if (customProperties.fresnelColor != null)
+                {
+                    materialEditor.ShaderProperty(customProperties.fresnelColor, "Fresnel Color");
+                }
+            }
         }
 
         // material main advanced options
