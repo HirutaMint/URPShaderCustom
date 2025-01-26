@@ -31,6 +31,9 @@ half _DetailNormalMapScale;
 half _Surface;
 //UVスクロール速度
 float4 _ScrollSpeed;
+//フレネル効果の強度
+float _FresnelPower;
+half4 _FresnelColor;
 CBUFFER_END
 
 // NOTE: Do not ifdef the properties for dots instancing, but ifdef the actual usage.
