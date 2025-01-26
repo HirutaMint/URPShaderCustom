@@ -75,7 +75,13 @@
         //UVスクロール機能の管理の値
         [Toggle] _uv_Scroll("enable UV SCROLL", Float) = 0
         //UVスクロールの速度の値
-        _ScrollSpeed ("Scroll Speed", Vector) = (0.1, 0.1, 0, 0) 
+        _ScrollSpeed ("Scroll Speed", Vector) = (0.1, 0.1, 0, 0)
+        //フレネル効果の管理の値
+        [Toggle] _Use_Fresnel("enable Fresnel Effect", Float) = 0
+        //フレネル効果の強度の値
+        _FresnelPower ("Fresnel Power", Float) = 5.0
+        //フレネル効果の色
+        [HDR] _FresnelColor("Fresnel Color", Color) = (1, 1, 1, 1)
     }
 
     SubShader
@@ -138,6 +144,8 @@
 
             //UVスクロール管理用のフラグ
             #pragma shader_feature_local _UV_SCROLL_ON
+            //フレネル効果管理用のフラグ
+            #pragma shader_feature_local _USE_FRESNEL_ON
 
             // -------------------------------------
             // Universal Pipeline keywords
