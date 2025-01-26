@@ -11,11 +11,20 @@ namespace UnityEditor.Rendering.Universal.ShaderGUI
             public MaterialProperty uv_Scroll;
             //UVスクロールの速度
             public MaterialProperty scrollSpeed;
+            //フレネル効果の管理用フラグ
+            public MaterialProperty useFresnel;
+            //フレネル効果の強度
+            public MaterialProperty fresnelPower;
+            //フレネル効果の色
+            public MaterialProperty fresnelColor;
 
             public LitProperties(MaterialProperty[] properties)
             {
                 uv_Scroll = BaseShaderGUI.FindProperty("_uv_Scroll", properties, false);
                 scrollSpeed = BaseShaderGUI.FindProperty("_ScrollSpeed", properties, false);
+                useFresnel = BaseShaderGUI.FindProperty("_Use_Fresnel", properties, false);
+                fresnelPower = BaseShaderGUI.FindProperty("_FresnelPower", properties, false);
+                fresnelColor = BaseShaderGUI.FindProperty("_FresnelColor", properties, false);
             }
         }
         
