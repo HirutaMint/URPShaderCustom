@@ -9,6 +9,9 @@
 //UVスクロール機能用の外部hlslをインクルード
 #include "Packages/com.unity.render-pipelines.universal/Shaders/UVScroll.hlsl"
 
+//フレネル効果の機能の外部hlslをインクルード
+#include "Packages/com.unity.render-pipelines.universal/Shaders/FresnelEffect.hlsl"
+
 
 // GLES2 has limited amount of interpolators
 #if defined(_PARALLAXMAP) && !defined(SHADER_API_GLES)
@@ -242,6 +245,16 @@ void LitPassFragment(
     half4 color = UniversalFragmentPBR(inputData, surfaceData);
     color.rgb = MixFog(color.rgb, inputData.fogCoord);
     color.a = OutputAlpha(color.a, IsSurfaceTypeTransparent(_Surface));
+    
+#if defined(_USE_FRESNEL_ON)
+    // フレネル効果を計算
+    float3 normalWS = normalize(inputData.normalWS);
+    float3 viewDirWS = normalize(inputData.viewDirectionWS);
+    float fresnel = CalculateFresnel(normalWS, viewDirWS, _FresnelPower); // フレネルの強度を調整
+
+    // フレネル効果をエミッションに適用
+    color.rgb += fresnel * _FresnelColor;
+#endif
 
     outColor = color;
 
