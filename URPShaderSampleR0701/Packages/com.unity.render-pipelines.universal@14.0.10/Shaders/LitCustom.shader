@@ -73,7 +73,7 @@
         [HideInInspector][NoScaleOffset]unity_ShadowMasks("unity_ShadowMasks", 2DArray) = "" {}
 
         //UVスクロール機能の管理の値
-        [Toggle] _uv_Scroll("enable UV SCROLL", Float) = 0
+        [Toggle] _Uv_Scroll("enable UV SCROLL", Float) = 0
         //UVスクロールの速度の値
         _ScrollSpeed ("Scroll Speed", Vector) = (0.1, 0.1, 0, 0)
         //フレネル効果の管理の値

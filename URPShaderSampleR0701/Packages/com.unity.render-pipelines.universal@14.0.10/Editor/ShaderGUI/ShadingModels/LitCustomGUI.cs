@@ -20,7 +20,7 @@ namespace UnityEditor.Rendering.Universal.ShaderGUI
 
             public LitProperties(MaterialProperty[] properties)
             {
-                uv_Scroll = BaseShaderGUI.FindProperty("_uv_Scroll", properties, false);
+                uv_Scroll = BaseShaderGUI.FindProperty("_Uv_Scroll", properties, false);
                 scrollSpeed = BaseShaderGUI.FindProperty("_ScrollSpeed", properties, false);
                 useFresnel = BaseShaderGUI.FindProperty("_Use_Fresnel", properties, false);
                 fresnelPower = BaseShaderGUI.FindProperty("_FresnelPower", properties, false);
